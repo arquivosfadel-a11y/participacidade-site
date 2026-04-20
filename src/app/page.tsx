@@ -272,6 +272,151 @@ function DashboardMockup() {
   );
 }
 
+// ─── Anomalous Matter Effect ──────────────────────────────────────────────────
+function AnomalousMatterEffect() {
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ borderRadius: 24 }}>
+      <motion.div
+        animate={{
+          borderRadius: [
+            "60% 40% 30% 70% / 60% 30% 70% 40%",
+            "30% 60% 70% 40% / 50% 60% 30% 60%",
+            "50% 40% 60% 50% / 40% 60% 50% 60%",
+            "60% 40% 30% 70% / 60% 30% 70% 40%",
+          ],
+          scale: [1, 1.06, 0.94, 1],
+        }}
+        transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
+        style={{
+          position: "absolute", width: "62%", height: "56%",
+          background: `radial-gradient(circle at 40% 40%, ${C.yellow}E0, ${C.yellow}30)`,
+          filter: "blur(52px)", top: "4%", left: "4%",
+        }}
+      />
+      <motion.div
+        animate={{
+          borderRadius: [
+            "40% 60% 60% 40% / 60% 30% 70% 40%",
+            "60% 40% 30% 60% / 40% 70% 30% 60%",
+            "40% 60% 60% 40% / 60% 30% 70% 40%",
+          ],
+          scale: [1, 0.88, 1.12, 1],
+          x: [0, 18, -12, 0], y: [0, -18, 12, 0],
+        }}
+        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+        style={{
+          position: "absolute", width: "58%", height: "52%",
+          background: `radial-gradient(circle at 60% 60%, ${C.green}E0, ${C.green}30)`,
+          filter: "blur(48px)", bottom: "4%", right: "4%",
+        }}
+      />
+      <motion.div
+        animate={{ scale: [1, 1.45, 0.75, 1.2, 1], opacity: [0.55, 1, 0.45, 0.8, 0.55] }}
+        transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+        style={{
+          position: "absolute", width: "32%", height: "32%", borderRadius: "50%",
+          background: `radial-gradient(circle, ${C.yellow}90, transparent)`,
+          filter: "blur(26px)", top: "38%", right: "12%",
+        }}
+      />
+      <motion.div
+        animate={{ scale: [1, 0.65, 1.35, 1], opacity: [0.45, 0.9, 0.35, 0.45] }}
+        transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut", delay: 2.2 }}
+        style={{
+          position: "absolute", width: "26%", height: "26%", borderRadius: "50%",
+          background: `radial-gradient(circle, ${C.green}90, transparent)`,
+          filter: "blur(22px)", bottom: "28%", left: "8%",
+        }}
+      />
+      <div style={{
+        position: "absolute", inset: "8%",
+        background: "rgba(255,255,255,0.18)",
+        backdropFilter: "blur(10px)",
+        WebkitBackdropFilter: "blur(10px)",
+        borderRadius: 36,
+        border: "1px solid rgba(255,255,255,0.35)",
+      }} />
+    </div>
+  );
+}
+
+// ─── Phone Mockup ─────────────────────────────────────────────────────────────
+function PhoneMockup() {
+  const menuItems = [
+    { icon: MessageSquare, label: "Denunciar", color: C.yellow },
+    { icon: FileText, label: "Minhas Reclamações", color: C.green },
+    { icon: MapPin, label: "Ver Todas", color: C.yellow },
+    { icon: Star, label: "Ranking", color: C.green },
+  ];
+
+  return (
+    <motion.div
+      style={{
+        width: 210,
+        background: "#012235",
+        borderRadius: 40,
+        padding: "14px 10px 20px",
+        boxShadow: "0 48px 96px rgba(0,0,0,0.28), 0 0 0 8px rgba(255,255,255,0.1), inset 0 0 0 1px rgba(255,255,255,0.12)",
+        transform: "perspective(1000px) rotateY(-15deg) rotateX(5deg)",
+        position: "relative",
+        zIndex: 10,
+      }}
+      animate={{ y: [0, -10, 0] }}
+      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+    >
+      {/* Notch */}
+      <div style={{
+        width: 72, height: 20, background: "#000A12",
+        borderRadius: 12, margin: "0 auto 10px",
+      }} />
+      {/* Screen */}
+      <div style={{ padding: "6px 4px" }}>
+        {/* App header */}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14, padding: "0 4px" }}>
+          <span style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.9)", letterSpacing: "0.02em" }}>
+            Participa Cidade
+          </span>
+          <div style={{ width: 22, height: 22, borderRadius: "50%", background: `${C.yellow}40` }} />
+        </div>
+        {/* Welcome */}
+        <div style={{ marginBottom: 12, padding: "0 4px" }}>
+          <div style={{ fontSize: 8, color: "rgba(255,255,255,0.4)", marginBottom: 2 }}>Olá, Maria!</div>
+          <div style={{ fontSize: 10, fontWeight: 600, color: C.yellow }}>O que deseja fazer?</div>
+        </div>
+        {/* Menu grid */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 7 }}>
+          {menuItems.map((item, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.4 + i * 0.1 }}
+              style={{
+                background: `${item.color}15`,
+                border: `1px solid ${item.color}35`,
+                borderRadius: 14,
+                padding: "10px 6px",
+                textAlign: "center",
+              }}
+            >
+              <item.icon size={16} style={{ color: item.color, margin: "0 auto 4px" }} strokeWidth={1.8} />
+              <div style={{ fontSize: 8, color: "rgba(255,255,255,0.75)", fontWeight: 600, lineHeight: 1.2 }}>
+                {item.label}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+        {/* Bottom nav dots */}
+        <div style={{ display: "flex", justifyContent: "center", gap: 6, marginTop: 14 }}>
+          {[C.yellow, "rgba(255,255,255,0.25)", "rgba(255,255,255,0.25)"].map((c, i) => (
+            <div key={i} style={{ width: i === 0 ? 18 : 5, height: 4, borderRadius: 2, background: c }} />
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 // ─── Navbar ───────────────────────────────────────────────────────────────────
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -324,7 +469,7 @@ function Navbar() {
           </div>
 
           <div className="hidden lg:block">
-            <a href="https://participa-cidade-production.up.railway.app"
+            <a href="https://participacidade-web-admin.vercel.app/login"
               target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold cursor-pointer hover:opacity-90 hover:-translate-y-px transition-all duration-200"
               style={{ background: C.yellow, color: C.dark }}>
@@ -358,7 +503,7 @@ function Navbar() {
                   {l.label}
                 </a>
               ))}
-              <a href="https://participa-cidade-production.up.railway.app"
+              <a href="https://participacidade-web-admin.vercel.app/login"
                 target="_blank" rel="noopener noreferrer"
                 className="mt-2 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-bold cursor-pointer"
                 style={{ background: C.yellow, color: C.dark }}>
@@ -372,115 +517,122 @@ function Navbar() {
   );
 }
 
-// ─── Hero Section — light bg + BackgroundPaths ────────────────────────────────
+// ─── Hero Section — two columns + AnomalousMatter ────────────────────────────
 function HeroSection() {
   return (
     <section
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{ background: C.bg }}
+      className="relative min-h-screen flex items-center overflow-hidden"
+      style={{ background: "#FFF8EE" }}
     >
-      {/* Animated SVG background paths */}
       <BackgroundPaths />
-
-      {/* Subtle radial glow in brand colors */}
-      <div className="absolute pointer-events-none"
-        style={{ top: "15%", left: "5%", width: 600, height: 600,
-          background: `radial-gradient(circle, ${C.yellow}0A 0%, transparent 65%)`, borderRadius: "50%" }} />
-      <div className="absolute pointer-events-none"
-        style={{ bottom: "10%", right: "5%", width: 500, height: 500,
-          background: `radial-gradient(circle, ${C.green}0A 0%, transparent 65%)`, borderRadius: "50%" }} />
 
       {/* Dot grid overlay */}
       <div className="absolute inset-0 pointer-events-none" style={{
-        backgroundImage: `radial-gradient(circle, ${C.dark}18 0.7px, transparent 1px)`,
+        backgroundImage: `radial-gradient(circle, ${C.dark}14 0.7px, transparent 1px)`,
         backgroundSize: "28px 28px",
       }} />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-5 sm:px-8 text-center py-32 pt-36">
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border mb-8 mx-auto"
-          style={{ borderColor: `${C.yellow}50`, background: `${C.yellow}0E` }}
-        >
-          <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: C.yellow }} />
-          <span className="text-sm font-semibold" style={{ color: C.dark }}>
-            Canal oficial entre cidadão e prefeitura
-          </span>
-        </motion.div>
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 w-full py-32 pt-36">
+        <div className="grid lg:grid-cols-2 gap-12 xl:gap-20 items-center">
 
-        {/* Headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="font-black leading-[1.05] mb-6"
-          style={{ fontSize: "clamp(2.8rem, 7vw, 5rem)", color: C.dark }}
-        >
-          <span className="block">Sua cidade ouve você.</span>
-          <span className="block mt-1" style={{ color: C.dark }}>
-            Sua gestão age com dados.
-          </span>
-        </motion.h1>
+          {/* Left column */}
+          <div>
+            {/* Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border mb-8"
+              style={{ borderColor: `${C.yellow}50`, background: `${C.yellow}0E` }}
+            >
+              <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: C.yellow }} />
+              <span className="text-sm font-semibold" style={{ color: C.dark }}>
+                Canal oficial entre cidadão e prefeitura
+              </span>
+            </motion.div>
 
-        {/* Accent underline */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 0.8, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="w-24 h-1.5 mx-auto mb-8 rounded-full origin-left"
-          style={{ background: `linear-gradient(90deg, ${C.yellow}, ${C.green})` }}
-        />
+            {/* Headline */}
+            <motion.h1
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="font-black leading-[1.08] mb-6"
+              style={{ fontSize: "clamp(2.2rem, 4.5vw, 3.8rem)", color: C.dark }}
+            >
+              Sua cidade ouve você. Sua gestão enxerga, decide e resolve.
+            </motion.h1>
 
-        {/* Subheadline */}
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.35 }}
-          className="text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
-          style={{ color: C.muted }}
-        >
-          O Participa Cidade conecta cidadãos e gestores públicos em um canal direto,
-          transparente e rastreável. Do relato ao resultado, tudo em tempo real.
-        </motion.p>
+            {/* Accent underline */}
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 0.8, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
+              className="w-24 h-1.5 mb-8 rounded-full origin-left"
+              style={{ background: `linear-gradient(90deg, ${C.yellow}, ${C.green})` }}
+            />
 
-        {/* CTAs */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-        >
-          <a href="#contato"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-base font-bold cursor-pointer hover:opacity-90 hover:-translate-y-0.5 transition-all duration-200"
-            style={{ background: C.yellow, color: C.dark, boxShadow: `0 8px 32px ${C.yellow}40` }}>
-            Quero para minha cidade
-            <ArrowRight size={18} />
-          </a>
-          <a href="#cidadaos"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-base font-semibold border cursor-pointer hover:bg-black/5 transition-all duration-200"
-            style={{ borderColor: `${C.dark}30`, color: C.dark }}>
-            Sou cidadão, quero participar
-          </a>
-        </motion.div>
+            {/* Subheadline */}
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.35 }}
+              className="text-lg sm:text-xl max-w-xl mb-10 leading-relaxed"
+              style={{ color: C.muted }}
+            >
+              O Participa Cidade conecta cidadãos e gestores públicos em um canal direto,
+              transparente e rastreável. Do relato ao resultado, tudo em tempo real.
+            </motion.p>
 
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
-          className="mt-16 flex flex-col items-center gap-2"
-          style={{ color: `${C.dark}50` }}
-        >
-          <span className="text-xs tracking-widest uppercase">Role para baixo</span>
+            {/* CTAs */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              <a href="#contato"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-base font-bold cursor-pointer hover:opacity-90 hover:-translate-y-0.5 transition-all duration-200"
+                style={{ background: C.yellow, color: C.dark, boxShadow: `0 8px 32px ${C.yellow}40` }}>
+                Quero para minha cidade
+                <ArrowRight size={18} />
+              </a>
+              <a href="#cidadaos"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-base font-semibold border cursor-pointer hover:bg-black/5 transition-all duration-200"
+                style={{ borderColor: `${C.dark}30`, color: C.dark }}>
+                Sou cidadão, quero participar
+              </a>
+            </motion.div>
+
+            {/* Scroll indicator */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.2 }}
+              className="mt-14 flex items-center gap-2"
+              style={{ color: `${C.dark}50` }}
+            >
+              <span className="text-xs tracking-widest uppercase">Role para baixo</span>
+              <motion.div
+                animate={{ y: [0, 8, 0] }}
+                transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}>
+                <ChevronDown size={20} />
+              </motion.div>
+            </motion.div>
+          </div>
+
+          {/* Right column — Anomalous Matter + Phone Mockup */}
           <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}>
-            <ChevronDown size={20} />
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.9, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="relative hidden lg:flex items-center justify-center"
+            style={{ height: 520 }}
+          >
+            <AnomalousMatterEffect />
+            <PhoneMockup />
           </motion.div>
-        </motion.div>
+
+        </div>
       </div>
     </section>
   );
@@ -807,7 +959,8 @@ function CTASection() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10">
-            <a href="tel:+5514996114720"
+            <a href="https://wa.me/5514996114720?text=Olá!%20Gostaria%20de%20agendar%20uma%20demonstração%20do%20Participa%20Cidade."
+              target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl text-base font-bold cursor-pointer hover:opacity-90 hover:-translate-y-0.5 transition-all duration-200 w-full sm:w-auto"
               style={{ background: C.dark, color: C.white, boxShadow: "0 8px 32px rgba(0,0,0,0.2)" }}>
               <Phone size={18} />
