@@ -1009,7 +1009,7 @@ function Footer() {
           </p>
 
           <div className="flex gap-5 text-xs" style={{ color: "rgba(255,255,255,0.35)" }}>
-            <a href="#" className="hover:text-white/60 transition-colors cursor-pointer">Política de Privacidade</a>
+            <a href="/politica-de-privacidade" className="hover:text-white/60 transition-colors cursor-pointer">Política de Privacidade</a>
             <a href="#" className="hover:text-white/60 transition-colors cursor-pointer">Termos de Uso</a>
           </div>
         </div>
